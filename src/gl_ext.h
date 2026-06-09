@@ -1,8 +1,15 @@
 #ifndef GL_EXT_H
 #define GL_EXT_H
 
+#define GL_SILENCE_DEPRECATION
+#define GLFW_INCLUDE_GLCOREARB
 #include <stddef.h>
 #include <GLFW/glfw3.h>
+
+#ifdef __APPLE__
+#include <OpenGL/gl3.h>
+#define LoadOpenGLExtensions()
+#else
 
 // Types (some are defined by gl.h but some might be missing)
 typedef char GLchar;
@@ -87,4 +94,5 @@ extern PFNGLVERTEXATTRIBPOINTERPROC glVertexAttribPointer;
 
 void LoadOpenGLExtensions(void);
 
+#endif // __APPLE__
 #endif

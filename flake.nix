@@ -23,7 +23,6 @@
         ] ++ (if pkgs.stdenv.isLinux then [
           libGL
         ] else if pkgs.stdenv.isDarwin then [
-          darwin.apple_sdk.frameworks.OpenGL
         ] else []);
       };
     });

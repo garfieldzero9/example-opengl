@@ -2,6 +2,7 @@
 #include "gl_ext.h"
 #include <stdio.h>
 
+#ifndef __APPLE__
 PFNGLCREATESHADERPROC glCreateShader = NULL;
 PFNGLSHADERSOURCEPROC glShaderSource = NULL;
 PFNGLCOMPILESHADERPROC glCompileShader = NULL;
@@ -61,7 +62,8 @@ void LoadOpenGLExtensions(void) {
     glDisableVertexAttribArray = (PFNGLDISABLEVERTEXATTRIBARRAYPROC)glfwGetProcAddress("glDisableVertexAttribArray");
     glVertexAttribPointer = (PFNGLVERTEXATTRIBPOINTERPROC)glfwGetProcAddress("glVertexAttribPointer");
 
-    if (!glGenBuffers) {
-        fprintf(stderr, "Failed to load OpenGL extensions!\n");
+    if (!glCreateShader || !glCreateProgram) {
+        fprintf(stderr, "Failed to load OpenGL extensions\n");
     }
 }
+#endif
