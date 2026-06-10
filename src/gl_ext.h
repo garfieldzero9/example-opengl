@@ -2,7 +2,9 @@
 #define GL_EXT_H
 
 #define GL_SILENCE_DEPRECATION
+#ifdef __APPLE__
 #define GLFW_INCLUDE_GLCOREARB
+#endif
 #include <stddef.h>
 #include <GLFW/glfw3.h>
 
